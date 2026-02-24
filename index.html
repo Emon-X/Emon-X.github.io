@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Md Solaiman Hossain Emon | Software Engineer</title>
+  <title>Md Solaiman Hossain Emon | Aspiring Software Engineer</title>
   <style>
     :root {
-      --primary: #0f172a;
-      --accent: #3b82f6;
-      --accent-light: #60a5fa;
-      --bg: #f8fafc;
-      --card: #ffffff;
-      --text: #1e293b;
+      --primary: #1e293b;
+      --accent: #6366f1;
+      /* Indigo */
+      --accent-light: #818cf8;
+      --bg: #ffffff;
+      --card: #f8fafc;
+      --text: #334155;
       --muted: #64748b;
       --border: #e2e8f0;
     }
@@ -31,24 +33,24 @@
 
     /* ── Header / Hero ── */
     header {
-      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+      background: linear-gradient(135deg, #4f46e5 0%, #196e6e 100%);
       color: #fff;
       padding: 60px 20px 50px;
-      text-align: center;
+      text-align: left;
     }
 
     .avatar {
-      width: 120px;
-      height: 120px;
+      width: 220px;
+      height: 220px;
       border-radius: 50%;
       background: var(--accent);
       display: flex;
-      align-items: center;
-      justify-content: center;
+      align-items: left;
+      justify-content: left;
       font-size: 2.5rem;
       font-weight: 700;
       color: #fff;
-      margin: 0 auto 20px;
+      margin: 0 0 20px 0;
       letter-spacing: 1px;
       overflow: hidden;
       border: 4px solid rgba(255, 255, 255, 0.3);
@@ -85,7 +87,7 @@
     .contact-bar {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 16px;
       margin-top: 20px;
     }
@@ -105,30 +107,47 @@
     }
 
     /* ── Navigation ── */
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
     nav {
-      background: var(--primary);
+      background: rgba(30, 41, 59, 0.95);
+      backdrop-filter: blur(10px);
       position: sticky;
       top: 0;
       z-index: 100;
       display: flex;
       justify-content: center;
-      gap: 4px;
-      padding: 0 20px;
+      gap: 8px;
+      padding: 10px 20px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      animation: slideDown 0.6s ease-out forwards;
     }
 
     nav a {
-      color: #94a3b8;
+      color: #cbd5e1;
       text-decoration: none;
-      font-size: 0.875rem;
+      font-size: 0.9rem;
       font-weight: 500;
-      padding: 14px 16px;
-      transition: color 0.2s, border-bottom 0.2s;
-      border-bottom: 2px solid transparent;
+      padding: 8px 16px;
+      border-radius: 99px;
+      transition: all 0.3s ease;
+      position: relative;
     }
 
     nav a:hover {
       color: #fff;
-      border-bottom-color: var(--accent);
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
     }
 
     /* ── Layout ── */
@@ -138,8 +157,22 @@
       padding: 40px 20px 80px;
     }
 
+    /* ── Animations ── */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     section {
       margin-bottom: 48px;
+      animation: fadeIn 0.8s ease-out forwards;
     }
 
     .section-title {
@@ -149,16 +182,26 @@
       border-left: 4px solid var(--accent);
       padding-left: 12px;
       margin-bottom: 20px;
+      background: linear-gradient(90deg, rgba(99, 102, 241, 0.1) 0%, transparent 100%);
+      padding: 8px 12px;
+      border-radius: 0 8px 8px 0;
     }
 
     /* ── Summary ── */
     .summary-card {
-      background: var(--card);
-      border: 1px solid var(--border);
+      background: linear-gradient(135deg, #e0f2fe 0%, #ffffff 100%);
+      border: 1px solid #bfdbfe;
       border-radius: 12px;
       padding: 24px;
-      color: var(--muted);
+      color: var(--text);
       font-size: 0.975rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .summary-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     }
 
     .summary-card p {
@@ -177,13 +220,14 @@
     }
 
     .pill {
-      background: #eff6ff;
-      color: var(--accent);
+      background: linear-gradient(135deg, #4f46e5 0%, #818cf8 100%);
+      color: #fff;
       font-size: 0.8rem;
       font-weight: 500;
-      padding: 4px 12px;
+      padding: 6px 14px;
       border-radius: 999px;
-      border: 1px solid #bfdbfe;
+      border: none;
+      box-shadow: 0 2px 4px rgba(79, 70, 229, 0.3);
     }
 
     /* ── Grid cards ── */
@@ -194,19 +238,28 @@
     }
 
     .card {
-      background: var(--card);
-      border: 1px solid var(--border);
+      background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+      border: 1px solid #bbf7d0;
       border-radius: 12px;
       padding: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      border-color: #86efac;
     }
 
     .card h3 {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #15803d;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       margin-bottom: 10px;
+      border-bottom: 1px dashed #bbf7d0;
+      padding-bottom: 5px;
     }
 
     .card ul {
@@ -227,22 +280,32 @@
     }
 
     .stat-card {
-      background: var(--card);
-      border: 1px solid var(--border);
+      background: linear-gradient(135deg, #fdf4ff 0%, #ffffff 100%);
+      border: 1px solid #f5d0fe;
       border-radius: 12px;
       padding: 20px;
       text-align: center;
+      transition: 0.3s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(192, 38, 211, 0.15);
+      border-color: #e879f9;
     }
 
     .stat-card .value {
       font-size: 1.75rem;
       font-weight: 700;
-      color: var(--accent);
+      background: linear-gradient(135deg, #d946ef 0%, #a855f7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .stat-card .label {
-      font-size: 0.8rem;
-      color: var(--muted);
+      font-size: 0.85rem;
+      color: #701a75;
+      font-weight: 600;
       margin-top: 4px;
     }
 
@@ -254,29 +317,47 @@
     }
 
     .achievement-item {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
+      background: linear-gradient(90deg, #fff1f2 0%, #fff 100%);
+      border-left: 4px solid #f43f5e;
+      border-radius: 6px;
       padding: 14px 18px;
       font-size: 0.9rem;
       display: flex;
       align-items: center;
       gap: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s;
     }
 
-    .achievement-item::before {
-      content: '🏆';
-      font-size: 1.1rem;
-      flex-shrink: 0;
+    .achievement-item:hover {
+      transform: translateX(5px);
     }
 
     /* ── Projects ── */
     .project-card {
-      background: var(--card);
-      border: 1px solid var(--border);
+      background: linear-gradient(135deg, #fff7ed 0%, #ffffff 100%);
+      border: 1px solid #fed7aa;
       border-radius: 12px;
       padding: 24px;
       margin-bottom: 16px;
+      transition: 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: #f97316;
+    }
+
+    .project-card:hover {
+      box-shadow: 0 8px 20px rgba(249, 115, 22, 0.15);
+      transform: translateY(-2px);
     }
 
     .project-header {
@@ -288,23 +369,25 @@
     }
 
     .project-header h3 {
-      font-size: 1.05rem;
-      font-weight: 700;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #9a3412;
     }
 
     .tech-badge {
-      background: #f0fdf4;
-      color: #16a34a;
+      background: #f97316;
+      color: #fff;
       font-size: 0.75rem;
       font-weight: 600;
       padding: 3px 10px;
       border-radius: 999px;
-      border: 1px solid #bbf7d0;
+      box-shadow: 0 2px 4px rgba(249, 115, 22, 0.3);
+      border: none;
     }
 
     .project-card p {
-      color: var(--muted);
-      font-size: 0.9rem;
+      color: #57534e;
+      font-size: 0.95rem;
       margin-bottom: 12px;
     }
 
@@ -312,6 +395,32 @@
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
+    }
+
+    .feature-list span {
+      background: #ffffff;
+      border: 1px solid #fed7aa;
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 0.8rem;
+      color: #c2410c;
+      font-weight: 500;
+    }
+
+    /* ── Experience / Education ── */
+    .timeline-item {
+      background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+      border: 1px solid #bfdbfe;
+      border-left: 4px solid #3b82f6;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+      transition: 0.3s;
+    }
+
+    .timeline-item:hover {
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15);
+      transform: scale(1.01);
     }
 
     .feature-list span {
@@ -389,236 +498,245 @@
 
     /* ── Responsive ── */
     @media (max-width: 600px) {
-      header h1 { font-size: 1.6rem; }
-      nav a { padding: 12px 10px; font-size: 0.8rem; }
+      header h1 {
+        font-size: 1.6rem;
+      }
+
+      nav a {
+        padding: 12px 10px;
+        font-size: 0.8rem;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<!-- ── Hero ── -->
-<header>
-  <div class="avatar">
-    <img src="images/profile.jpg" alt="Md Solaiman Hossain Emon"
-         onerror="this.src='images/profile.svg';this.onerror=null;" />
-  </div>
-  <h1>Md Solaiman Hossain Emon</h1>
-  <p class="tagline">Aspiring Software Engineer &nbsp;·&nbsp; Competitive Programmer &nbsp;·&nbsp; C++ Specialist</p>
-  <div class="contact-bar">
-    <span>📍 Bangladesh</span>
-    <a href="mailto:mdemonhossaince23013@gmail.com">✉️ mdemonhossaince23013@gmail.com</a>
-    <a href="https://www.linkedin.com/in/md-solaiman-hossain-emon-084713378" target="_blank" rel="noopener">🔗 LinkedIn</a>
-  </div>
-</header>
-
-<!-- ── Navigation ── -->
-<nav>
-  <a href="#summary">Summary</a>
-  <a href="#skills">Skills</a>
-  <a href="#cp">CP Profile</a>
-  <a href="#projects">Projects</a>
-  <a href="#experience">Experience</a>
-  <a href="#education">Education</a>
-</nav>
-
-<main>
-
-  <!-- ── Summary ── -->
-  <section id="summary">
-    <h2 class="section-title">Professional Summary</h2>
-    <div class="summary-card">
-      <p>
-        Computer Science and Engineering undergraduate with strong algorithmic foundations and a
-        passion for solving complex problems. My competitive programming background has sharpened
-        my ability to write clean, efficient, and well-optimized code under strict constraints.
-      </p>
-      <p>
-        I bring deep expertise in data structures &amp; algorithms, clean C/C++ implementation,
-        solid OOP principles, and the discipline to handle edge cases and performance bottlenecks
-        that competitive programming demands.
-      </p>
-      <div class="pill-list">
-        <span class="pill">Data Structures &amp; Algorithms</span>
-        <span class="pill">Competitive Programming</span>
-        <span class="pill">C / C++</span>
-        <span class="pill">Object-Oriented Programming</span>
-        <span class="pill">DBMS</span>
-        <span class="pill">Complexity Analysis</span>
-      </div>
+  <!-- ── Hero ── -->
+  <header>
+    <div class="avatar">
+      <img src="images/profile.JPG" alt="Md Solaiman Hossain Emon"
+        onerror="this.src='images/profile.svg';this.onerror=null;" />
     </div>
-  </section>
+    <h1>Md Solaiman Hossain Emon</h1>
+    <p class="tagline">Aspiring Software Engineer &nbsp;·&nbsp; Competitive Programmer &nbsp;·&nbsp; C++ Specialist</p>
+    <div class="contact-bar">
+      <span>📍 Bangladesh</span>
+      <a href="mailto:mdemonhossaince23013@gmail.com">✉️ mdemonhossaince23013@gmail.com</a>
+      <a href="https://www.linkedin.com/in/md-solaiman-hossain-emon-084713378" target="_blank" rel="noopener">🔗
+        LinkedIn</a>
+    </div>
+  </header>
 
-  <!-- ── Skills ── -->
-  <section id="skills">
-    <h2 class="section-title">Technical Skills</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Languages</h3>
+  <!-- ── Navigation ── -->
+  <nav>
+    <a href="#summary">Summary</a>
+    <a href="#skills">Skills</a>
+    <a href="#cp">CP Profile</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+  </nav>
+
+  <main>
+
+    <!-- ── Summary ── -->
+    <section id="summary">
+      <h2 class="section-title">Professional Summary</h2>
+      <div class="summary-card">
+        <p>
+          Computer Science and Engineering undergraduate with strong algorithmic foundations and a
+          passion for solving complex problems. My competitive programming background has sharpened
+          my ability to write clean, efficient, and well-optimized code under strict constraints.
+        </p>
+        <p>
+          I bring deep expertise in data structures &amp; algorithms, clean C/C++ implementation,
+          solid OOP principles, and the discipline to handle edge cases and performance bottlenecks
+          that competitive programming demands.
+        </p>
+        <div class="pill-list">
+          <span class="pill">Data Structures &amp; Algorithms</span>
+          <span class="pill">Competitive Programming</span>
+          <span class="pill">C / C++</span>
+          <span class="pill">Object-Oriented Programming</span>
+          <span class="pill">DBMS</span>
+          <span class="pill">Complexity Analysis</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Skills ── -->
+    <section id="skills">
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Languages</h3>
+          <ul>
+            <li>C</li>
+            <li>C++</li>
+            <li>Java</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Core CS</h3>
+          <ul>
+            <li>Data Structures</li>
+            <li>Algorithms</li>
+            <li>OOP</li>
+            <li>DBMS</li>
+            <li>Complexity Analysis</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Databases</h3>
+          <ul>
+            <li>Oracle SQL Developer</li>
+            <li>SQL Server</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Tools</h3>
+          <ul>
+            <li>Git &amp; GitHub</li>
+            <li>Visual Studio Code</li>
+            <li>Java Swing</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Competitive Programming ── -->
+    <section id="cp">
+      <h2 class="section-title">Competitive Programming</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="value">2500+</div>
+          <div class="label">Problems Solved</div>
+        </div>
+        <div class="stat-card">
+          <div class="value">200+</div>
+          <div class="label">Contests Participated</div>
+        </div>
+        <div class="stat-card">
+          <div class="value">Specialist</div>
+          <div class="label">Codeforces</div>
+        </div>
+        <div class="stat-card">
+          <div class="value">3★</div>
+          <div class="label">CodeChef</div>
+        </div>
+        <div class="stat-card">
+          <div class="value">771</div>
+          <div class="label">AtCoder Max Rating</div>
+        </div>
+      </div>
+
+      <div class="achievement-list">
+        <div class="achievement-item">
+          ICPC Asia Dhaka Regional Preliminary — 2024 &amp; 2025
+        </div>
+        <div class="achievement-item">
+          37th place — AUST Inter University Programming Contest (130+ teams)
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Projects ── -->
+    <section id="projects">
+      <h2 class="section-title">Projects</h2>
+
+      <div class="project-card">
+        <div class="project-header">
+          <h3>Offline Online Judge Simulator</h3>
+          <span class="tech-badge">Java Swing</span>
+        </div>
+        <p>
+          A desktop-based judge system that compiles and executes C, C++, and Java submissions,
+          enforces strict time limits, generates verdicts (AC, WA, TLE, CE), and handles
+          process execution and file I/O securely.
+        </p>
+        <div class="feature-list">
+          <span>Multi-language Compilation</span>
+          <span>Time-limit Enforcement</span>
+          <span>Verdict Generation</span>
+          <span>Process Control</span>
+          <span>Secure File I/O</span>
+          <span>Modular Architecture</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <h3>Multi-Functional Converter Application</h3>
+          <span class="tech-badge">C</span>
+        </div>
+        <p>
+          A structured console-based application with modular design supporting currency, temperature,
+          weight, number system, and unit conversions — built with clean function decomposition,
+          input validation, and optimized logical branching.
+        </p>
+        <div class="feature-list">
+          <span>Currency Conversion</span>
+          <span>Temperature &amp; Weight</span>
+          <span>Number Systems</span>
+          <span>Unit Conversion</span>
+          <span>Input Validation</span>
+          <span>Modular Design</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Experience ── -->
+    <section id="experience">
+      <h2 class="section-title">Experience</h2>
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <h3>Programming Mentor</h3>
+          <span class="timeline-date">2025 – Present</span>
+        </div>
+        <p class="timeline-sub">C/C++ &amp; Data Structures and Algorithms</p>
         <ul>
-          <li>C</li>
-          <li>C++</li>
-          <li>Java</li>
+          <li>Conduct C/C++ and DSA sessions for junior students</li>
+          <li>Guide problem-solving strategies for competitive programming contests</li>
+          <li>Help students understand time complexity and code optimization</li>
+          <li>Strengthened communication clarity, code review skills, and technical explanation ability</li>
         </ul>
       </div>
-      <div class="card">
-        <h3>Core CS</h3>
+    </section>
+
+    <!-- ── Education ── -->
+    <section id="education">
+      <h2 class="section-title">Education</h2>
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <h3>B.Sc. in Computer Science and Engineering</h3>
+          <span class="timeline-date">5th Semester (Ongoing)</span>
+        </div>
+        <p class="timeline-sub">Mawlana Bhashani Science and Technology University</p>
         <ul>
-          <li>Data Structures</li>
-          <li>Algorithms</li>
-          <li>OOP</li>
-          <li>DBMS</li>
-          <li>Complexity Analysis</li>
+          <li>CGPA: 3.25 / 4.00</li>
         </ul>
       </div>
-      <div class="card">
-        <h3>Databases</h3>
-        <ul>
-          <li>Oracle SQL Developer</li>
-          <li>SQL Server</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Tools</h3>
-        <ul>
-          <li>Git &amp; GitHub</li>
-          <li>Visual Studio Code</li>
-          <li>Java Swing</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ── Competitive Programming ── -->
-  <section id="cp">
-    <h2 class="section-title">Competitive Programming</h2>
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="value">2500+</div>
-        <div class="label">Problems Solved</div>
+    <!-- ── Career Objective ── -->
+    <section id="objective">
+      <h2 class="section-title">Career Objective</h2>
+      <div class="summary-card">
+        <p>
+          To contribute to scalable systems, apply algorithmic efficiency in real-world engineering,
+          and continuously grow into a highly capable software engineer delivering clean and
+          maintainable solutions.
+        </p>
       </div>
-      <div class="stat-card">
-        <div class="value">200+</div>
-        <div class="label">Contests Participated</div>
-      </div>
-      <div class="stat-card">
-        <div class="value">Specialist</div>
-        <div class="label">Codeforces</div>
-      </div>
-      <div class="stat-card">
-        <div class="value">3★</div>
-        <div class="label">CodeChef</div>
-      </div>
-      <div class="stat-card">
-        <div class="value">771</div>
-        <div class="label">AtCoder Max Rating</div>
-      </div>
-    </div>
+    </section>
 
-    <div class="achievement-list">
-      <div class="achievement-item">
-        ICPC Asia Dhaka Regional Preliminary — 2024 &amp; 2025
-      </div>
-      <div class="achievement-item">
-        37th place — AUST Inter University Programming Contest (130+ teams)
-      </div>
-    </div>
-  </section>
+  </main>
 
-  <!-- ── Projects ── -->
-  <section id="projects">
-    <h2 class="section-title">Projects</h2>
-
-    <div class="project-card">
-      <div class="project-header">
-        <h3>Offline Online Judge Simulator</h3>
-        <span class="tech-badge">Java Swing</span>
-      </div>
-      <p>
-        A desktop-based judge system that compiles and executes C, C++, and Java submissions,
-        enforces strict time limits, generates verdicts (AC, WA, TLE, CE), and handles
-        process execution and file I/O securely.
-      </p>
-      <div class="feature-list">
-        <span>Multi-language Compilation</span>
-        <span>Time-limit Enforcement</span>
-        <span>Verdict Generation</span>
-        <span>Process Control</span>
-        <span>Secure File I/O</span>
-        <span>Modular Architecture</span>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-header">
-        <h3>Multi-Functional Converter Application</h3>
-        <span class="tech-badge">C</span>
-      </div>
-      <p>
-        A structured console-based application with modular design supporting currency, temperature,
-        weight, number system, and unit conversions — built with clean function decomposition,
-        input validation, and optimized logical branching.
-      </p>
-      <div class="feature-list">
-        <span>Currency Conversion</span>
-        <span>Temperature &amp; Weight</span>
-        <span>Number Systems</span>
-        <span>Unit Conversion</span>
-        <span>Input Validation</span>
-        <span>Modular Design</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Experience ── -->
-  <section id="experience">
-    <h2 class="section-title">Experience</h2>
-    <div class="timeline-item">
-      <div class="timeline-header">
-        <h3>Programming Mentor</h3>
-        <span class="timeline-date">2025 – Present</span>
-      </div>
-      <p class="timeline-sub">C/C++ &amp; Data Structures and Algorithms</p>
-      <ul>
-        <li>Conduct C/C++ and DSA sessions for junior students</li>
-        <li>Guide problem-solving strategies for competitive programming contests</li>
-        <li>Help students understand time complexity and code optimization</li>
-        <li>Strengthened communication clarity, code review skills, and technical explanation ability</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ── Education ── -->
-  <section id="education">
-    <h2 class="section-title">Education</h2>
-    <div class="timeline-item">
-      <div class="timeline-header">
-        <h3>B.Sc. in Computer Science and Engineering</h3>
-        <span class="timeline-date">5th Semester (Ongoing)</span>
-      </div>
-      <p class="timeline-sub">Mawlana Bhashani Science and Technology University</p>
-      <ul>
-        <li>CGPA: 3.25 / 4.00</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ── Career Objective ── -->
-  <section id="objective">
-    <h2 class="section-title">Career Objective</h2>
-    <div class="summary-card">
-      <p>
-        To contribute to scalable systems, apply algorithmic efficiency in real-world engineering,
-        and continuously grow into a highly capable software engineer delivering clean and
-        maintainable solutions.
-      </p>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <p>© 2025 Md Solaiman Hossain Emon &nbsp;·&nbsp; Bangladesh</p>
-</footer>
+  <footer>
+    <p>© 2025 Md Solaiman Hossain Emon &nbsp;·&nbsp; Bangladesh</p>
+  </footer>
 
 </body>
+
 </html>
