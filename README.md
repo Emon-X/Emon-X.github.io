@@ -1,6 +1,6 @@
 # Md Solaiman Hossain Emon
 
-**Aspiring Software Engineer | Competitive Programmer | C++ Specialist**
+**Aspiring Software Engineer | Competitive Programmer | CF Specialist**
 
 📍 Bangladesh &nbsp;|&nbsp; ✉️ mdemonhossaince23013@gmail.com &nbsp;|&nbsp; [LinkedIn](https://www.linkedin.com/in/md-solaiman-hossain-emon-084713378)
 
