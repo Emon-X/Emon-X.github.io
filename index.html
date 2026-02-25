@@ -7,15 +7,19 @@
   <title>Md Solaiman Hossain Emon | Aspiring Software Engineer</title>
   <style>
     :root {
-      --primary: #1e293b;
-      --accent: #6366f1;
-      /* Indigo */
-      --accent-light: #818cf8;
-      --bg: #ffffff;
-      --card: #f8fafc;
-      --text: #334155;
-      --muted: #64748b;
-      --border: #e2e8f0;
+      --primary: #0a0f1c;
+      /* Dark Navy Base */
+      --accent: #00f3ff;
+      /* Electric Cyan */
+      --accent-glow: rgba(0, 243, 255, 0.4);
+      --accent-secondary: #7b2cbf;
+      /* Neon Purple */
+      --bg: #0a0f1c;
+      --card: rgba(16, 23, 41, 0.8);
+      /* Semi-transparent dark card */
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --border: #1e293b;
     }
 
     * {
@@ -26,17 +30,73 @@
 
     body {
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: var(--bg);
+      background:
+        radial-gradient(circle at 15% 50%, rgba(79, 70, 229, 0.15), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(0, 243, 255, 0.15), transparent 25%),
+        linear-gradient(180deg, var(--bg) 0%, #05080f 100%);
+      background-attachment: fixed;
       color: var(--text);
       line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Subtle flowing lines effect overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        repeating-linear-gradient(90deg,
+          transparent,
+          transparent 50px,
+          rgba(0, 243, 255, 0.03) 50px,
+          rgba(0, 243, 255, 0.03) 51px),
+        repeating-linear-gradient(0deg,
+          transparent,
+          transparent 50px,
+          rgba(79, 70, 229, 0.03) 50px,
+          rgba(79, 70, 229, 0.03) 51px);
+      pointer-events: none;
+      z-index: -1;
     }
 
     /* ── Header / Hero ── */
     header {
-      background: linear-gradient(135deg, #4f46e5 0%, #196e6e 100%);
+      background: linear-gradient(135deg, rgba(10, 15, 28, 0.95) 0%, rgba(16, 23, 41, 0.95) 100%);
+      border-bottom: 1px solid rgba(0, 243, 255, 0.1);
       color: #fff;
       padding: 60px 20px 50px;
       text-align: left;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Header Glow Effect */
+    header::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(0, 243, 255, 0.05) 0%, transparent 60%);
+      animation: subtlePulse 10s infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes subtlePulse {
+      0% {
+        transform: scale(1);
+        opacity: 0.5;
+      }
+
+      100% {
+        transform: scale(1.1);
+        opacity: 0.8;
+      }
     }
 
     .avatar {
@@ -106,6 +166,105 @@
       color: #fff;
     }
 
+    .contact-links {
+      display: flex;
+      flex-wrap: nowrap;
+      /* Force single line */
+      gap: 12px;
+      margin-top: 12px;
+      animation: slideDown 0.8s ease-out forwards;
+      overflow-x: auto;
+      /* Allow scroll if too wide */
+      padding: 10px 4px 10px 4px;
+      /* Added padding to prevent hover clip */
+      scrollbar-width: none;
+      /* Hide scrollbar Firefox */
+    }
+
+    .contact-links::-webkit-scrollbar {
+      display: none;
+      /* Hide scrollbar Chrome/Safari */
+    }
+
+    .contact-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      /* Prevent text wrap inside buttons */
+    }
+
+    .contact-links a:hover {
+      color: var(--accent);
+      background: rgba(0, 243, 255, 0.1);
+      box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+      transform: translateY(-2px);
+      border-color: rgba(0, 243, 255, 0.4);
+    }
+
+    /* ── Project Slider Animation ── */
+    .project-slider {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 56.25%;
+      /* 16:9 Aspect Ratio */
+      overflow: hidden;
+      border-radius: 8px;
+      border: 1px solid rgba(249, 115, 22, 0.3);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .project-slider img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      animation: slideShow 8s infinite;
+    }
+
+    .project-slider img:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .project-slider img:nth-child(2) {
+      animation-delay: 4s;
+    }
+
+    @keyframes slideShow {
+      0% {
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      40% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
     /* ── Navigation ── */
     @keyframes slideDown {
       from {
@@ -120,8 +279,11 @@
     }
 
     nav {
-      background: rgba(30, 41, 59, 0.95);
-      backdrop-filter: blur(10px);
+      background: rgba(10, 15, 28, 0.85);
+      /* Darker translucent nav */
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      /* Subtle border */
       position: sticky;
       top: 0;
       z-index: 100;
@@ -129,12 +291,12 @@
       justify-content: center;
       gap: 8px;
       padding: 10px 20px;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
       animation: slideDown 0.6s ease-out forwards;
     }
 
     nav a {
-      color: #cbd5e1;
+      color: #94a3b8;
       text-decoration: none;
       font-size: 0.9rem;
       font-weight: 500;
@@ -145,8 +307,9 @@
     }
 
     nav a:hover {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.15);
+      color: var(--accent);
+      background: rgba(0, 243, 255, 0.1);
+      box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
       transform: translateY(-2px);
     }
 
@@ -178,30 +341,46 @@
     .section-title {
       font-size: 1.25rem;
       font-weight: 700;
-      color: var(--primary);
+      color: var(--accent);
       border-left: 4px solid var(--accent);
       padding-left: 12px;
       margin-bottom: 20px;
-      background: linear-gradient(90deg, rgba(99, 102, 241, 0.1) 0%, transparent 100%);
+      background: linear-gradient(90deg, rgba(0, 243, 255, 0.1) 0%, transparent 100%);
       padding: 8px 12px;
       border-radius: 0 8px 8px 0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     /* ── Summary ── */
     .summary-card {
-      background: linear-gradient(135deg, #e0f2fe 0%, #ffffff 100%);
-      border: 1px solid #bfdbfe;
+      background: rgba(16, 23, 41, 0.6);
+      border: 1px solid rgba(0, 243, 255, 0.1);
       border-radius: 12px;
       padding: 24px;
-      color: var(--text);
+      color: #94a3b8;
       font-size: 0.975rem;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
       transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .summary-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent);
     }
 
     .summary-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 10px 30px -10px rgba(0, 243, 255, 0.15);
+      border-color: rgba(0, 243, 255, 0.3);
     }
 
     .summary-card p {
@@ -220,14 +399,21 @@
     }
 
     .pill {
-      background: linear-gradient(135deg, #4f46e5 0%, #818cf8 100%);
-      color: #fff;
+      background: rgba(0, 243, 255, 0.05);
+      color: var(--accent);
       font-size: 0.8rem;
       font-weight: 500;
       padding: 6px 14px;
       border-radius: 999px;
-      border: none;
-      box-shadow: 0 2px 4px rgba(79, 70, 229, 0.3);
+      border: 1px solid rgba(0, 243, 255, 0.2);
+      box-shadow: 0 0 5px rgba(0, 243, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .pill:hover {
+      background: rgba(0, 243, 255, 0.15);
+      box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+      text-shadow: 0 0 5px rgba(0, 243, 255, 0.5);
     }
 
     /* ── Grid cards ── */
@@ -238,34 +424,56 @@
     }
 
     .card {
-      background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
-      border: 1px solid #bbf7d0;
+      background: rgba(16, 23, 41, 0.6);
+      border: 1px solid rgba(0, 243, 255, 0.1);
       border-radius: 12px;
       padding: 20px;
       transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(0, 243, 255, 0.3), transparent);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0.5;
+      transition: opacity 0.3s;
     }
 
     .card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-      border-color: #86efac;
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 10px 30px -10px rgba(0, 243, 255, 0.15);
+      border-color: rgba(0, 243, 255, 0.4);
+      background: rgba(16, 23, 41, 0.9);
+    }
+
+    .card:hover::after {
+      opacity: 1;
     }
 
     .card h3 {
       font-size: 0.95rem;
       font-weight: 700;
-      color: #15803d;
+      color: var(--accent);
       text-transform: uppercase;
       letter-spacing: 0.05em;
       margin-bottom: 10px;
-      border-bottom: 1px dashed #bbf7d0;
+      border-bottom: 1px dashed rgba(0, 243, 255, 0.3);
       padding-bottom: 5px;
+      text-shadow: 0 0 5px rgba(0, 243, 255, 0.3);
     }
 
     .card ul {
       list-style: none;
       font-size: 0.9rem;
-      color: var(--text);
+      color: #cbd5e1;
     }
 
     .card ul li {
@@ -280,8 +488,8 @@
     }
 
     .stat-card {
-      background: linear-gradient(135deg, #fdf4ff 0%, #ffffff 100%);
-      border: 1px solid #f5d0fe;
+      background: rgba(16, 23, 41, 0.6);
+      border: 1px solid rgba(123, 44, 191, 0.3);
       border-radius: 12px;
       padding: 20px;
       text-align: center;
@@ -290,23 +498,24 @@
 
     .stat-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(192, 38, 211, 0.15);
-      border-color: #e879f9;
+      box-shadow: 0 8px 16px rgba(123, 44, 191, 0.2);
+      border-color: rgba(123, 44, 191, 0.6);
+      background: rgba(16, 23, 41, 0.9);
     }
 
     .stat-card .value {
       font-size: 1.75rem;
       font-weight: 700;
-      background: linear-gradient(135deg, #d946ef 0%, #a855f7 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #d946ef;
+      text-shadow: 0 0 10px rgba(217, 70, 239, 0.5);
     }
 
     .stat-card .label {
       font-size: 0.85rem;
-      color: #701a75;
+      color: #e879f9;
       font-weight: 600;
       margin-top: 4px;
+      opacity: 0.9;
     }
 
     .achievement-list {
@@ -317,26 +526,31 @@
     }
 
     .achievement-item {
-      background: linear-gradient(90deg, #fff1f2 0%, #fff 100%);
+      background: rgba(16, 23, 41, 0.6);
       border-left: 4px solid #f43f5e;
+      border: 1px solid rgba(244, 63, 94, 0.2);
+      border-left-width: 4px;
       border-radius: 6px;
       padding: 14px 18px;
       font-size: 0.9rem;
+      color: #cbd5e1;
       display: flex;
       align-items: center;
       gap: 10px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-      transition: transform 0.2s;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s, background 0.3s;
     }
 
     .achievement-item:hover {
       transform: translateX(5px);
+      background: rgba(16, 23, 41, 0.9);
+      box-shadow: 0 4px 10px rgba(244, 63, 94, 0.1);
     }
 
     /* ── Projects ── */
     .project-card {
-      background: linear-gradient(135deg, #fff7ed 0%, #ffffff 100%);
-      border: 1px solid #fed7aa;
+      background: rgba(16, 23, 41, 0.6);
+      border: 1px solid rgba(249, 115, 22, 0.2);
       border-radius: 12px;
       padding: 24px;
       margin-bottom: 16px;
@@ -353,11 +567,14 @@
       width: 4px;
       height: 100%;
       background: #f97316;
+      box-shadow: 0 0 10px #f97316;
     }
 
     .project-card:hover {
       box-shadow: 0 8px 20px rgba(249, 115, 22, 0.15);
+      background: rgba(16, 23, 41, 0.9);
       transform: translateY(-2px);
+      border-color: rgba(249, 115, 22, 0.5);
     }
 
     .project-header {
@@ -371,22 +588,23 @@
     .project-header h3 {
       font-size: 1.1rem;
       font-weight: 800;
-      color: #9a3412;
+      color: #fb923c;
+      text-shadow: 0 0 5px rgba(249, 115, 22, 0.3);
     }
 
     .tech-badge {
-      background: #f97316;
-      color: #fff;
+      background: rgba(249, 115, 22, 0.15);
+      color: #fdba74;
+      border: 1px solid rgba(249, 115, 22, 0.4);
       font-size: 0.75rem;
       font-weight: 600;
       padding: 3px 10px;
       border-radius: 999px;
-      box-shadow: 0 2px 4px rgba(249, 115, 22, 0.3);
-      border: none;
+      box-shadow: 0 0 5px rgba(249, 115, 22, 0.1);
     }
 
     .project-card p {
-      color: #57534e;
+      color: #94a3b8;
       font-size: 0.95rem;
       margin-bottom: 12px;
     }
@@ -397,49 +615,33 @@
       gap: 6px;
     }
 
-    .feature-list span {
-      background: #ffffff;
-      border: 1px solid #fed7aa;
-      border-radius: 6px;
-      padding: 4px 10px;
-      font-size: 0.8rem;
-      color: #c2410c;
-      font-weight: 500;
-    }
-
-    /* ── Experience / Education ── */
     .timeline-item {
-      background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
-      border: 1px solid #bfdbfe;
+      background: rgba(16, 23, 41, 0.6);
+      border: 1px solid rgba(59, 130, 246, 0.3);
       border-left: 4px solid #3b82f6;
       border-radius: 12px;
       padding: 24px;
       margin-bottom: 16px;
       transition: 0.3s;
+      color: #cbd5e1;
     }
 
     .timeline-item:hover {
-      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15);
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
       transform: scale(1.01);
+      background: rgba(16, 23, 41, 0.9);
+      border-color: #60a5fa;
     }
 
     .feature-list span {
-      background: var(--bg);
-      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 6px;
       padding: 3px 10px;
       font-size: 0.8rem;
-      color: var(--text);
+      color: #cbd5e1;
     }
 
-    /* ── Experience / Education ── */
-    .timeline-item {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px;
-      margin-bottom: 16px;
-    }
 
     .timeline-header {
       display: flex;
@@ -450,27 +652,34 @@
     }
 
     .timeline-header h3 {
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 700;
+      color: #93c5fd;
+      text-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
     }
 
     .timeline-date {
       font-size: 0.82rem;
-      color: var(--muted);
+      color: #94a3b8;
       font-weight: 500;
+      background: rgba(59, 130, 246, 0.1);
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(59, 130, 246, 0.2);
     }
 
     .timeline-sub {
       font-size: 0.875rem;
-      color: var(--accent);
+      color: #7dd3fc;
       font-weight: 500;
       margin-bottom: 10px;
+      text-shadow: 0 0 5px rgba(125, 211, 252, 0.3);
     }
 
     .timeline-item ul {
       list-style: none;
       font-size: 0.88rem;
-      color: var(--muted);
+      color: #94a3b8;
     }
 
     .timeline-item ul li {
@@ -485,16 +694,29 @@
       left: 0;
       color: var(--accent);
       font-weight: 700;
+      text-shadow: 0 0 5px var(--accent);
     }
 
     /* ── Footer ── */
     footer {
       text-align: center;
-      padding: 24px;
-      font-size: 0.8rem;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
+      padding: 40px 20px;
+      font-size: 0.85rem;
+      color: #64748b;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(10, 15, 28, 0.95);
     }
+
+    footer:hover {
+      color: #94a3b8;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent) !important;
+      text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+      transform: translateY(-2px);
+    }
+
 
     /* ── Responsive ── */
     @media (max-width: 600px) {
@@ -514,17 +736,31 @@
 
   <!-- ── Hero ── -->
   <header>
-    <div class="avatar">
-      <img src="images/profile.JPG" alt="Md Solaiman Hossain Emon"
-        onerror="this.src='images/profile.svg';this.onerror=null;" />
-    </div>
-    <h1>Md Solaiman Hossain Emon</h1>
-    <p class="tagline">Aspiring Software Engineer &nbsp;·&nbsp; Competitive Programmer &nbsp;·&nbsp; C++ Specialist</p>
-    <div class="contact-bar">
-      <span>📍 Bangladesh</span>
-      <a href="mailto:mdemonhossaince23013@gmail.com">✉️ mdemonhossaince23013@gmail.com</a>
-      <a href="https://www.linkedin.com/in/md-solaiman-hossain-emon-084713378" target="_blank" rel="noopener">🔗
-        LinkedIn</a>
+    <div style="display: flex; align-items: flex-start; gap: 40px; flex-wrap: wrap;">
+      <div style="flex: 0 0 220px;">
+        <div class="avatar">
+          <img src="images/profile.JPG" alt="Md Solaiman Hossain Emon"
+            onerror="this.src='images/profile.svg';this.onerror=null;" />
+        </div>
+      </div>
+      <div style="flex: 1; min-width: 250px;">
+        <h1>Md Solaiman Hossain Emon</h1>
+        <p class="tagline">Aspiring Software Engineer &nbsp;·&nbsp; Competitive Programmer &nbsp;·&nbsp; CF Specialist
+        </p>
+        <div class="contact-bar" style="flex-direction: column; gap: 10px; margin-top: 20px;">
+          <span>📍 Bangladesh</span>
+          <a href="mailto:mdemonhossaince23013@gmail.com">✉️ mdemonhossaince23013@gmail.com</a>
+          <a href="https://www.linkedin.com/in/md-solaiman-hossain-emon-084713378" target="_blank" rel="noopener">🔗
+            LinkedIn</a>
+          <div class="contact-links">
+            <a href="https://codeforces.com/profile/_EmonX_" target="_blank" rel="noopener">⚡ Codeforces</a>
+            <a href="https://github.com/Emon-X" target="_blank" rel="noopener">🐙 Github</a>
+            <a href="https://leetcode.com/u/Emon_07/" target="_blank" rel="noopener">💻 LeetCode</a>
+            <a href="https://atcoder.jp/users/EmonMBSTU13" target="_blank" rel="noopener">🔴 AtCoder</a>
+            <a href="https://www.codechef.com/users/emon111" target="_blank" rel="noopener">🏆 CodeChef</a>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -645,23 +881,36 @@
     <section id="projects">
       <h2 class="section-title">Projects</h2>
 
-      <div class="project-card">
-        <div class="project-header">
-          <h3>Offline Online Judge Simulator</h3>
-          <span class="tech-badge">Java Swing</span>
+      <div class="project-card" style="display: flex; gap: 20px; flex-wrap: wrap; align-items: start;">
+        <div style="flex: 1; min-width: 280px;">
+          <div class="project-header">
+            <h3>Offline Online Judge Simulator</h3>
+            <span class="tech-badge">Java Swing</span>
+          </div>
+          <p>
+            A desktop-based judge system that compiles and executes C, C++, and Java submissions,
+            enforces strict time limits, generates verdicts (AC, WA, TLE, CE), and handles
+            process execution and file I/O securely.
+          </p>
+          <div class="feature-list">
+            <span>Multi-language Compilation</span>
+            <span>Time-limit Enforcement</span>
+            <span>Verdict Generation</span>
+            <span>Process Control</span>
+            <span>Secure File I/O</span>
+            <span>Modular Architecture</span>
+          </div>
         </div>
-        <p>
-          A desktop-based judge system that compiles and executes C, C++, and Java submissions,
-          enforces strict time limits, generates verdicts (AC, WA, TLE, CE), and handles
-          process execution and file I/O securely.
-        </p>
-        <div class="feature-list">
-          <span>Multi-language Compilation</span>
-          <span>Time-limit Enforcement</span>
-          <span>Verdict Generation</span>
-          <span>Process Control</span>
-          <span>Secure File I/O</span>
-          <span>Modular Architecture</span>
+        <div class="project-image" style="flex: 1 1 450px; max-width: 100%;">
+          <div class="project-slider">
+            <!-- First Screenshot -->
+            <img src="images/OfflineOj.png" alt="Judge Simulator Screenshot 1"
+              onerror="this.src='https://placehold.co/800x500/1e293b/cbd5e1?text=Project+Screenshot+1';">
+
+            <!-- Second Screenshot (Add your image here) -->
+            <img src="images/OfflineOj2.png" alt="Judge Simulator Screenshot 2" style="animation-delay: 4s;"
+              onerror="this.src='https://placehold.co/800x500/0f172a/94a3b8?text=Project+Screenshot+2';">
+          </div>
         </div>
       </div>
 
@@ -734,6 +983,26 @@
   </main>
 
   <footer>
+    <div class="footer-content">
+      <h3 style="color: var(--accent); margin-bottom: 10px; font-size: 1.1rem;">Let's Connect</h3>
+      <p style="color: #94a3b8; margin-bottom: 20px; font-size: 0.9rem;">Open for opportunities and collaborations</p>
+
+      <div class="footer-links"
+        style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 30px;">
+        <a href="mailto:mdemonhossaince23013@gmail.com"
+          style="color: #cbd5e1; text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.3s;">
+          ✉️ Email
+        </a>
+        <a href="https://www.linkedin.com/in/md-solaiman-hossain-emon-084713378" target="_blank" rel="noopener"
+          style="color: #cbd5e1; text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.3s;">
+          🔗 LinkedIn
+        </a>
+        <a href="https://github.com/Emon-X" target="_blank" rel="noopener"
+          style="color: #cbd5e1; text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.3s;">
+          🐙 GitHub
+        </a>
+      </div>
+    </div>
     <p>© 2025 Md Solaiman Hossain Emon &nbsp;·&nbsp; Bangladesh</p>
   </footer>
 
