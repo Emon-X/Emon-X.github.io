@@ -52,7 +52,7 @@ Competitive programming has strengthened: time & space optimization, edge-case h
 ## Projects
 
 ### Offline Online Judge Simulator
-**Tech:** Java Swing
+**Tech:** Java Swing | Vibe coded
 
 Engineered a desktop-based judge system that:
 - Compiles and executes C, C++, Java submissions
