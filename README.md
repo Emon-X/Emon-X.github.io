@@ -24,7 +24,7 @@ Computer Science and Engineering undergraduate with strong algorithmic foundatio
 |---|---|
 | Codeforces | Specialist |
 | CodeChef | 3-Star |
-| AtCoder | Max Rating: 771 |
+| AtCoder | Max Rating: 847 |
 
 - Solved **2500+** problems
 - Participated in **200+** contests
@@ -39,7 +39,7 @@ Competitive programming has strengthened: time & space optimization, edge-case h
 
 ## Technical Stack
 
-**Languages:** C, C++, Java
+**Languages:** C, C++, python
 
 **Core CS:** Data Structures & Algorithms, OOP, DBMS, Complexity Analysis
 
